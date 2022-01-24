@@ -2,8 +2,12 @@ import React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 import { Feather } from "@expo/vector-icons";
 
-//TODO: type props
-const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
+interface Props {
+  term: string;
+  onTermChange: any;
+  onTermSubmit: any;
+}
+export const SearchBar = ({ term, onTermChange, onTermSubmit }: Props) => {
   return (
     <View style={styles.background}>
       <Feather name="search" size={24} color="black" style={styles.iconStyle} />
@@ -38,5 +42,3 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
 });
-
-export default SearchBar;

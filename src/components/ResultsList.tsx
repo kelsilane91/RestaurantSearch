@@ -1,9 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, FlatList } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { Results } from "../types/Results";
 
-// TODO: type propsa
-const ResultsList = ({ title, results }) => {
+interface ResultsListProps {
+  title: string,
+  results: Results[]
+}
+const ResultsList = ({ title, results }: ResultsListProps) => {
   return (
     <View>
       <Text style={styles.title}>{title}</Text>
@@ -12,10 +16,7 @@ const ResultsList = ({ title, results }) => {
         data={results}
         keyExtractor={(result) => result.id}
         renderItem={({ item }) => {
-          return (
-            <Text>{item.name}</Text>
-            // <Text>{ite}</Text>
-          );
+          return <Text>{item.name}</Text>;
         }}
       />
     </View>
