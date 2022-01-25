@@ -1,41 +1,51 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, ScrollView } from "react-native";
 import ResultsList from "../components/ResultsList";
 import { SearchBar } from "../components/SearchBar";
 import useResults from "../hooks/useResults";
 import { Results } from "../types/Results";
 
-const SearchScreen = () => {
+const SearchScreen = ({ navigation }: any) => {
   const [term, setTerm] = useState("");
 
   const [searchApi, results, errorMessage] = useResults();
-  console.log(results);
 
   const filterResultsByPrice = (price: string) => {
-    // price === "$" || "$$" || "$$$";
     return (results as Results[]).filter((result: Results) => {
       return result.price === price;
     });
   };
   return (
-    <View style={styles.background}>
+    <>
       <SearchBar
         term={term}
         onTermChange={setTerm}
         onTermSubmit={() => searchApi(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {results.length} results</Text>
-      <ResultsList title="Cost Effective" results={filterResultsByPrice("$")} />
-      <ResultsList title="Bit Pricier" results={filterResultsByPrice("$$")} />
-      <ResultsList title="Big Spender" results={filterResultsByPrice("$$$")} />
-    </View>
+      <Text style={styles.text}>We have found {results.length} results</Text>
+      <ScrollView>
+        <ResultsList
+          title="Cost Effective"
+          results={filterResultsByPrice("$")}
+        />
+        <ResultsList title="Bit Pricier" results={filterResultsByPrice("$$")} />
+        <ResultsList
+          title="Big Spender"
+          results={filterResultsByPrice("$$$")}
+        />
+        <ResultsList
+          title="Must Be Wealthy"
+          results={filterResultsByPrice("$$$$")}
+        />
+      </ScrollView>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  background: {
-    backgroundColor: "white",
+  text: {
+    marginLeft: 10,
   },
 });
 

@@ -7,13 +7,12 @@ export default () => {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const searchApi = async (searchTerm: string) => {
-    console.log("Hi there!");
     try {
       const response = await yelp.get("/search", {
         params: {
           limit: 50,
           term: searchTerm,
-          location: "san jose",
+          location: "new york",
         },
       });
       setResults(response.data.businesses);
