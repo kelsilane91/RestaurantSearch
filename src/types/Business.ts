@@ -1,4 +1,4 @@
-export interface Results {
+export interface Business {
   alias: string;
   categories: [
     {

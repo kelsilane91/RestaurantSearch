@@ -7,10 +7,10 @@ import {
   FlatList,
   Image,
 } from "react-native";
-import { Results } from "../types/Results";
+import { Business } from "../types/Business";
 
 interface ResultsDetailProps {
-  result: Results;
+  result: Business;
 }
 const ResultsDetail = ({ result }: ResultsDetailProps) => {
   return (

@@ -4,7 +4,6 @@ import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { ResultsListProps, RootStackParamList } from "../types/Navigation";
-import { Results } from "../types/Results";
 import ResultsDetail from "./ResultsDetail";
 
 const ResultsList = ({ title, results }: ResultsListProps) => {

@@ -3,15 +3,15 @@ import { Text, StyleSheet, ScrollView } from "react-native";
 import ResultsList from "../components/ResultsList";
 import { SearchBar } from "../components/SearchBar";
 import useResults from "../hooks/useResults";
-import { Results } from "../types/Results";
+import { Business } from "../types/Business";
 
-const SearchScreen = ({ navigation }: any) => {
+const SearchScreen = () => {
   const [term, setTerm] = useState("");
 
   const [searchApi, results, errorMessage] = useResults();
 
   const filterResultsByPrice = (price: string) => {
-    return (results as Results[]).filter((result: Results) => {
+    return (results as Business[]).filter((result: Business) => {
       return result.price === price;
     });
   };

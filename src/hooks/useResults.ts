@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import yelp from "../api/yelp";
-import { Results } from "../types/Results";
+import { Business } from "../types/Business";
 
 export default () => {
-  const [results, setResults] = useState<Results[]>([]);
+  const [results, setResults] = useState<Business[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const searchApi = async (searchTerm: string) => {
